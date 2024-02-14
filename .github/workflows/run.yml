@@ -43,7 +43,7 @@ jobs:
       - name: Build Clojure from Source
         run: |
           cd clojure-source
-          ./mvn install
+          mvn install
 
       - name: Run Tests
         run: |
