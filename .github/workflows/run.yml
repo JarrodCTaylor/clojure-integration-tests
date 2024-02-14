@@ -33,6 +33,7 @@ jobs:
         with:
           repository: ${{ github.event.inputs.repository }}
           ref: ${{ github.event.inputs.ref }}
+          path: 'clojure-source'
 
       - name: Debug
         run: |
@@ -41,7 +42,7 @@ jobs:
 
       - name: Build Clojure from Source
         run: |
-          cd clojure
+          cd clojure-source
           ./mvn install
 
       - name: Run Tests
