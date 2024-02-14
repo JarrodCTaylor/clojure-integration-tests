@@ -1,0 +1,44 @@
+name: Clojure CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      javaVersion:
+        description: "Java Version"
+        required: true
+        default: '11'
+      repository:
+        description: "Repository name with owner."
+        required: true
+        default: clojure/clojure
+      ref:
+        description: "The branch, tag or SHA to checkout"
+        required: true
+        default: 'master'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: ${{ github.event.inputs.javaVersion }}
+
+      - name: Checkout Clojure Source Code
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          ref: ${{ github.event.inputs.repository }}
+
+      - name: Build Clojure from Source
+        run: |
+          cd clojure
+          ./mvn install
+
+      - name: Run Tests
+        run: |
+          pwd
