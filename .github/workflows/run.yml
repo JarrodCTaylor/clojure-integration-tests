@@ -10,7 +10,7 @@ on:
       repository:
         description: "Repository name with owner."
         required: true
-        default: clojure/clojure
+        default: 'clojure/clojure'
       ref:
         description: "The branch, tag or SHA to checkout"
         required: true
