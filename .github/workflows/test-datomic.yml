@@ -18,7 +18,7 @@ on:
 
 jobs:
   call-build-clojure-workflow:
-    uses: ./.github/workflows/build-clojure.yml@main
+    uses: ./.github/workflows/build-clojure.yml
     with:
       javaVersion: ${{ github.event.inputs.javaVersion }}
       repository: ${{ github.event.inputs.repository }}
