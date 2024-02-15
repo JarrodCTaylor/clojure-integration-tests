@@ -63,16 +63,16 @@ jobs:
           sudo ./posix-install.sh
           clojure
 
-#      - name: Determine latest snapshot version
-#        run: |
-#          chmod +x ./test-source/scripts/find-latest-snapshot.sh
-#          ./test-source/scripts/find-latest-snapshot.sh
-#          echo "Here is what we have: ${{ env.LATEST_SNAPSHOT }}"
-
-      - name: Run Tests
+      - name: Determine latest snapshot version
         run: |
           chmod +x ./test-source/scripts/find-latest-snapshot.sh
           ./test-source/scripts/find-latest-snapshot.sh
+          echo "Here is what we have: ${{ env.LATEST_SNAPSHOT }}"
+
+      - name: Run Tests
+        run: |
+#          chmod +x ./test-source/scripts/find-latest-snapshot.sh
+#          ./test-source/scripts/find-latest-snapshot.sh
           cd /home/runner/work/clojure-integration-tests/clojure-integration-tests/test-source
           echo "Here is what we have: ${{ env.LATEST_SNAPSHOT }}"
           clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version "${{ env.LATEST_SNAPSHOT }}"}}}' -M:test datomic
