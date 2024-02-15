@@ -67,9 +67,9 @@ jobs:
         run: |
           pwd
           ls -la
-          chmod +x ./scripts/find-latest-snapshot.sh
-          ./scripts/find-latest-snapshot.sh
-#          echo "LATEST_SNAPSHOT=$LATEST_SNAPSHOT" >> $GITHUB_ENV
+          chmod +x ./test-source/scripts/find-latest-snapshot.sh
+          ./test-source/scripts/find-latest-snapshot.sh
+          echo "LATEST_SNAPSHOT=$LATEST_SNAPSHOT" >> $GITHUB_ENV
 
       - name: Run Tests
         run: |
