@@ -64,8 +64,9 @@ jobs:
           clojure
 
       - name: Determine latest snapshot version
-        id: latest_snapshot
         run: |
+          pwd
+          ls -la
           chmod +x ./scripts/find-latest-snapshot.sh
           ./scripts/find-latest-snapshot.sh
 #          echo "LATEST_SNAPSHOT=$LATEST_SNAPSHOT" >> $GITHUB_ENV
