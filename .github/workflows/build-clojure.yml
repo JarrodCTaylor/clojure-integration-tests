@@ -1,20 +1,20 @@
-name: Clojure CI
+name: Build Clojure From Source
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       javaVersion:
         description: "Java Version"
+        type: string
         required: true
-        default: '11'
       repository:
         description: "Repository name with owner."
+        type: string
         required: true
-        default: 'clojure/clojure'
       ref:
         description: "The branch, tag or SHA to checkout"
+        type: string
         required: true
-        default: 'master'
 
 jobs:
   build:
@@ -23,28 +23,20 @@ jobs:
 
     steps:
       - name: Setup Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: ${{ github.event.inputs.javaVersion }}
+          distribution: 'temurin'
+          java-version: ${{ inputs.javaVersion }}
 
       - name: Checkout Clojure Source Code
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.event.inputs.repository }}
-          ref: ${{ github.event.inputs.ref }}
+          repository: ${{ inputs.repository }}
+          ref: ${{ inputs.ref }}
           path: 'clojure-source'
-
-      - name: Debug
-        run: |
-          pwd
-          ls -la
 
       - name: Build Clojure from Source
         run: |
           cd clojure-source
           mvn install
 
-      - name: Run Tests
-        run: |
-          pwd

@@ -1,0 +1,2 @@
+#kaocha/v1 {:tests [{:id :datomic
+                     :test-paths ["test/clojure_integration_tests/datomic"]}]}
