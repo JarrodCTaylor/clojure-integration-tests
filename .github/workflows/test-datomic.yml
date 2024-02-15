@@ -75,4 +75,4 @@ jobs:
           cd $HOME/.m2/repository/org/clojure/clojure
           LATEST_SNAPSHOT=$(find . -type d -name "*-SNAPSHOT" -exec basename {} \; | sort -V | tail -n 1)
           cd /home/runner/work/clojure-integration-tests/clojure-integration-tests/test-source
-          clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version \"${{ env.LATEST_SNAPSHOT }}\"}}}' -M:test datomic
+          clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version "${{ env.LATEST_SNAPSHOT }}"}}}' -M:test datomic
