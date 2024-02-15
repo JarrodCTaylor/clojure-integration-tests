@@ -69,11 +69,10 @@ jobs:
           ls -la
           chmod +x ./test-source/scripts/find-latest-snapshot.sh
           ./test-source/scripts/find-latest-snapshot.sh
-          echo "LATEST_SNAPSHOT=$LATEST_SNAPSHOT" >> $GITHUB_ENV
 
       - name: Run Tests
         run: |
           pwd
           ls -la
           cd test-source
-          clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version $LATEST_SNAPSHOT}}}' -M:test datomic
+          clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version ${{ LATEST_SNAPSHOT }}}}}' -M:test datomic
