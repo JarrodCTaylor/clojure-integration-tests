@@ -76,5 +76,8 @@ jobs:
           LATEST_SNAPSHOT=$(find . -type d -name "*-SNAPSHOT" -exec basename {} \; | sort -V | tail -n 1)
           pwd
           ls -la
-          cd $HOME/test-source
+          cd $HOME
+          echo "Now for something completely different."
+          pwd
+          ls -la
           clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version "$LATEST_SNAPSHOT"}}}' -M:test datomic
