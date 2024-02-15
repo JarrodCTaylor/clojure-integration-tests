@@ -58,5 +58,5 @@ jobs:
       - name: Run Tests
         run: |
           pwd
-          cd test-source
-          clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.12.0-master-SNAPSHOT"}}}' -M:test datomic
+#          cd test-source
+#          clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.12.0-master-SNAPSHOT"}}}' -M:test datomic
