@@ -76,7 +76,7 @@ jobs:
           LATEST_SNAPSHOT=$(find . -type d -name "*-SNAPSHOT" -exec basename {} \; | sort -V | tail -n 1)
           pwd
           ls -la
-          cd $HOME
+          cd ~
           echo "Now for something completely different."
           pwd
           ls -la
