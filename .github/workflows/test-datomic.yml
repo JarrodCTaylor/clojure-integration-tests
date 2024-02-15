@@ -63,16 +63,16 @@ jobs:
           sudo ./posix-install.sh
           clojure
 
-      - name: Determine latest snapshot version
-        run: |
-          pwd
-          ls -la
-          chmod +x ./test-source/scripts/find-latest-snapshot.sh
-          ./test-source/scripts/find-latest-snapshot.sh
+#      - name: Determine latest snapshot version
+#        run: |
+#          pwd
+#          ls -la
+#          chmod +x ./test-source/scripts/find-latest-snapshot.sh
+#          ./test-source/scripts/find-latest-snapshot.sh
 
       - name: Run Tests
         run: |
-          pwd
-          ls -la
-          cd test-source
+          cd $HOME/.m2/repository/org/clojure/clojure
+          LATEST_SNAPSHOT=$(find . -type d -name "*-SNAPSHOT" -exec basename {} \; | sort -V | tail -n 1)
+          cd $HOME/test-source
           clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version "$LATEST_SNAPSHOT"}}}' -M:test datomic
