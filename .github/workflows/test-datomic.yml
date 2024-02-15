@@ -74,6 +74,6 @@ jobs:
         run: |
           cd $HOME/.m2/repository/org/clojure/clojure
           LATEST_SNAPSHOT=$(find . -type d -name "*-SNAPSHOT" -exec basename {} \; | sort -V | tail -n 1)
-          cd /home/runner/work/test-source
+          cd /home/runner/work
           ls -la
           clojure -Srepro -Sdeps '{:deps {org.clojure/clojure {:mvn/version "$LATEST_SNAPSHOT"}}}' -M:test datomic
