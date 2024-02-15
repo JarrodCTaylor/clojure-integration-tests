@@ -17,21 +17,36 @@ on:
         default: 'master'
 
 jobs:
-  call-build-clojure-workflow:
-    uses: ./.github/workflows/build-clojure.yml
-    with:
-      javaVersion: ${{ github.event.inputs.javaVersion }}
-      repository: ${{ github.event.inputs.repository }}
-      ref: ${{ github.event.inputs.ref }}
 
   build:
+
     runs-on: ubuntu-latest
+
     steps:
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: ${{ inputs.javaVersion }}
+
+      - name: Checkout Clojure Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.repository }}
+          ref: ${{ inputs.ref }}
+          path: 'clojure-source'
+
+      - name: Build Clojure from Source
+        run: |
+          cd clojure-source
+          mvn install
+
       - name: Create dev-local.edn
         run: |
           mkdir $HOME/.datomic
           cd $HOME/.datomic
           echo '{:storage-dir "/home/runner"}' > dev-local.edn
+          cd $HOME
 
       - name: Checkout Integration Test Source Code
         uses: actions/checkout@v4
