@@ -63,12 +63,13 @@ jobs:
           sudo ./posix-install.sh
           clojure
 
-#      - name: Determine latest snapshot version
-#        run: |
-#          pwd
-#          ls -la
-#          chmod +x ./test-source/scripts/find-latest-snapshot.sh
-#          ./test-source/scripts/find-latest-snapshot.sh
+      - name: Determine latest snapshot version
+        run: |
+          pwd
+          ls -la
+          chmod +x ./test-source/scripts/find-latest-snapshot.sh
+          ./test-source/scripts/find-latest-snapshot.sh
+          echo "Here is what we have: ${{ env.LATEST_SNAPSHOT }}"
 
       - name: Run Tests
         run: |
