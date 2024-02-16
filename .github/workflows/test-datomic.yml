@@ -47,7 +47,7 @@ jobs:
           pwd
           ls -la
           cd $HOME/.datomic
-          echo '{:storage-dir "/home/runner"}' > dev-local.edn
+          echo '{:storage-dir "/home/runner/work"}' > dev-local.edn
 
       - name: Checkout Integration Test Source Code
         uses: actions/checkout@v4
