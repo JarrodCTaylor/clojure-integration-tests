@@ -8,3 +8,9 @@
 (deftest create-and-list-db
   (sut/create-db test-db-name)
   (is (= [test-db-name] (sut/list-dbs))))
+
+(deftest query-db
+  (let [conn (sut/conn test-db-name)]
+    (sut/transact-schema conn)
+    (sut/transact-entities conn)
+    (is (= 2 (sut/count-foos conn)))))
