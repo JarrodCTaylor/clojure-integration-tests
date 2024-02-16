@@ -3,6 +3,7 @@
 
 
 (def client (d/client {:system "dev"
+                       :storage-dir :mem
                        :server-type :datomic-local}))
 
 (defn create-db [name]
