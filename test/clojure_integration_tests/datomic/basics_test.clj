@@ -1,6 +1,10 @@
 (ns clojure-integration-tests.datomic.basics-test
-  (:require [clojure.test :refer :all]))
+  (:require
+    [clojure.test :refer :all]
+    [clojure-integration-tests.datomic :as sut]))
 
+(def test-db-name "test-db")
 
-(deftest dummy
-  (is (= 1 2)))
+(deftest create-and-list-db
+  (sut/create-db test-db-name)
+  (is (= [test-db-name] (sut/list-dbs))))
