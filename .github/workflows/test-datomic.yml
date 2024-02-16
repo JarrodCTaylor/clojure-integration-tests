@@ -41,20 +41,20 @@ jobs:
           cd clojure-source
           mvn install
 
-      - name: Create dev-local.edn
-        run: |
-          mkdir $HOME/.datomic
-          cd $HOME/.datomic
-          echo '{:storage-dir "/home/runner"}' > dev-local.edn
-          echo "Config"
-          cat /home/runner/dev-local.edn
-
       - name: Checkout Integration Test Source Code
         uses: actions/checkout@v4
         with:
           repository: JarrodCTaylor/clojure-integration-tests
           ref: 'main'
           path: 'test-source'
+
+      - name: Create dev-local.edn
+        run: |
+          mkdir $HOME/.datomic
+          cd $HOME/.datomic
+          echo '{:storage-dir "/home/runner/work/clojure-integration-tests/clojure-integration-tests"}' > dev-local.edn
+          echo "Config"
+          cat /home/runner/work/clojure-integration-tests/clojure-integration-tests/dev-local.edn
 
       - name: Install CLI
         run: |
