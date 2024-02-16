@@ -44,12 +44,10 @@ jobs:
       - name: Create dev-local.edn
         run: |
           mkdir $HOME/.datomic
-          pwd
-          ls -la
           cd $HOME/.datomic
-          pwd
-          ls -la
-          echo '{:storage-dir "${{ env.HOME }}/runner"}' > dev-local.edn
+          echo '{:storage-dir "/home/runner"}' > dev-local.edn
+          echo "Config"
+          cat /home/runner/dev-local.edn
 
       - name: Checkout Integration Test Source Code
         uses: actions/checkout@v4
