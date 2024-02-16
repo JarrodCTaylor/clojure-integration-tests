@@ -12,6 +12,6 @@
 (defn list-dbs []
   (d/list-databases client {}))
 
-(def conn (d/connect client {:db-name "test-db"}))
+; (def conn (d/connect client {:db-name "test-db"}))
 
 
