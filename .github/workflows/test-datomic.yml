@@ -52,9 +52,9 @@ jobs:
         run: |
           mkdir $HOME/.datomic
           cd $HOME/.datomic
-          echo '{:storage-dir "/home/runner/work/clojure-integration-tests/clojure-integration-tests"}' > dev-local.edn
-          echo "Config"
-          cat /home/runner/work/clojure-integration-tests/clojure-integration-tests/dev-local.edn
+          pwd
+          ls -la
+          echo '{:storage-dir "/home/runner/.datomic"}' > dev-local.edn
 
       - name: Install CLI
         run: |
