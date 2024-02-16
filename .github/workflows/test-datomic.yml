@@ -49,7 +49,7 @@ jobs:
           cd $HOME/.datomic
           pwd
           ls -la
-          echo '{:storage-dir "${{ HOME }}/runner"}' > dev-local.edn
+          echo '{:storage-dir "${{ env.HOME }}/runner"}' > dev-local.edn
 
       - name: Checkout Integration Test Source Code
         uses: actions/checkout@v4
