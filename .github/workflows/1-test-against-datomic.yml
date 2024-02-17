@@ -1,4 +1,4 @@
-name: Test against datomic
+name: Test Against Datomic
 
 on:
   workflow_dispatch:

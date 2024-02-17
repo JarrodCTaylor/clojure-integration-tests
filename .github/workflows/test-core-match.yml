@@ -1,4 +1,4 @@
-name: Test Core Logic
+name: Test Core Match
 
 on:
 
@@ -53,10 +53,10 @@ jobs:
           chmod +x ./test-source/scripts/find-latest-snapshot.sh
           ./test-source/scripts/find-latest-snapshot.sh
 
-      - name: Checkout Core.Logic Source Code
+      - name: Checkout Core.Match Source Code
         uses: actions/checkout@v4
         with:
-          repository: clojure/core.logic
+          repository: clojure/core.match
           ref: 'master'
           path: 'contrib-source'
 

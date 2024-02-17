@@ -1,4 +1,4 @@
-name: Test against contrib
+name: Test Against Contrib
 
 on:
   workflow_dispatch:
@@ -24,9 +24,15 @@ jobs:
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
 
-
   test-core-logic:
     uses: ./.github/workflows/test-core-logic.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
+
+  test-core-match:
+    uses: ./.github/workflows/test-core-match.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
