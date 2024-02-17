@@ -23,3 +23,11 @@ jobs:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+
+
+  test-core-logic:
+    uses: ./.github/workflows/test-core-logic.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
