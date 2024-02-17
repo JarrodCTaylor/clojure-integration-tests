@@ -46,7 +46,7 @@ jobs:
       ref: ${{ inputs.ref }}
 
   test-core-combinatorics:
-    uses: ./.github/workflows/test-core-combinatorics.yml
+    uses: ./.github/workflows/test-math-combinatorics.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}

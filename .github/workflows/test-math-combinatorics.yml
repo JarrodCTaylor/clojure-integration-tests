@@ -1,4 +1,4 @@
-name: Test Core Combinatorics
+name: Test Math Combinatorics
 
 on:
 
@@ -53,10 +53,10 @@ jobs:
           chmod +x ./test-source/scripts/find-latest-snapshot.sh
           ./test-source/scripts/find-latest-snapshot.sh
 
-      - name: Checkout Core.Combinatorics Source Code
+      - name: Checkout Math.Combinatorics Source Code
         uses: actions/checkout@v4
         with:
-          repository: clojure/core.combinatorics
+          repository: clojure/math.combinatorics
           ref: 'master'
           path: 'contrib-source'
 

@@ -56,7 +56,7 @@ jobs:
       - name: Checkout Java.Jdbc Source Code
         uses: actions/checkout@v4
         with:
-          repository: clojure/java-jdbc
+          repository: clojure/java.jdbc
           ref: 'master'
           path: 'contrib-source'
 
