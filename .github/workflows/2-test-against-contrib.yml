@@ -1,0 +1,25 @@
+name: Test against contrib
+
+on:
+  workflow_dispatch:
+    inputs:
+      javaVersion:
+        description: "Java Version"
+        required: true
+        default: '11'
+      repository:
+        description: "Repository name with owner."
+        required: true
+        default: 'clojure/clojure'
+      ref:
+        description: "The branch, tag or SHA to checkout"
+        required: true
+        default: 'master'
+
+jobs:
+  test-core-cache:
+    uses: ./.github/workflows/test-core-cache.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}

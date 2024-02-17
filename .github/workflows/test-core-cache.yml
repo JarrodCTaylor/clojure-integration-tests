@@ -1,36 +1,21 @@
-name: Test Contribs
+name: Test Core Cache
 
 on:
 
-#  workflow_call:
-#    inputs:
-#      javaVersion:
-#        description: "Java Version"
-#        type: string
-#        required: true
-#      repository:
-#        description: "Repository name with owner."
-#        type: string
-#        required: true
-#      ref:
-#        description: "The branch, tag or SHA to checkout"
-#        type: string
-#        required: true
-
-  workflow_dispatch:
+  workflow_call:
     inputs:
       javaVersion:
         description: "Java Version"
+        type: string
         required: true
-        default: '11'
       repository:
         description: "Repository name with owner."
+        type: string
         required: true
-        default: 'clojure/clojure'
       ref:
         description: "The branch, tag or SHA to checkout"
+        type: string
         required: true
-        default: 'master'
 
 jobs:
   build:
@@ -56,13 +41,6 @@ jobs:
           cd clojure-source
           mvn install
 
-      - name: Checkout Core.Async Source Code
-        uses: actions/checkout@v4
-        with:
-          repository: clojure/core.cache
-          ref: 'master'
-          path: 'contrib-source'
-
       - name: Checkout Integration Test Source Code
         uses: actions/checkout@v4
         with:
@@ -74,6 +52,13 @@ jobs:
         run: |
           chmod +x ./test-source/scripts/find-latest-snapshot.sh
           ./test-source/scripts/find-latest-snapshot.sh
+
+      - name: Checkout Core.Async Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: clojure/core.cache
+          ref: 'master'
+          path: 'contrib-source'
 
       - name: Run Tests
         run: |
