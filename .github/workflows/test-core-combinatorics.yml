@@ -1,0 +1,66 @@
+name: Test Core Combinatorics
+
+on:
+
+  workflow_call:
+    inputs:
+      javaVersion:
+        description: "Java Version"
+        type: string
+        required: true
+      repository:
+        description: "Repository name with owner."
+        type: string
+        required: true
+      ref:
+        description: "The branch, tag or SHA to checkout"
+        type: string
+        required: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ inputs.javaVersion }}
+
+      - name: Checkout Clojure Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.repository }}
+          ref: ${{ inputs.ref }}
+          path: 'clojure-source'
+
+      - name: Build Clojure from Source
+        run: |
+          cd clojure-source
+          mvn install
+
+      - name: Checkout Integration Test Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: JarrodCTaylor/clojure-integration-tests
+          ref: 'main'
+          path: 'test-source'
+
+      - name: Determine latest snapshot version
+        run: |
+          chmod +x ./test-source/scripts/find-latest-snapshot.sh
+          ./test-source/scripts/find-latest-snapshot.sh
+
+      - name: Checkout Core.Combinatorics Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: clojure/core.combinatorics
+          ref: 'master'
+          path: 'contrib-source'
+
+      - name: Run Tests
+        run: |
+          cd /home/runner/work/clojure-integration-tests/clojure-integration-tests/contrib-source
+          mvn -ntp -B -Dclojure.version=${{ env.LATEST_SNAPSHOT }} clean test

@@ -37,3 +37,52 @@ jobs:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+
+  test-core-memoize:
+    uses: ./.github/workflows/test-core-memoize.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
+
+  test-core-combinatorics:
+    uses: ./.github/workflows/test-core-combinatorics.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
+
+  test-java-jdbc:
+    uses: ./.github/workflows/test-java-jdbc.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
+
+  test-data-xml:
+    uses: ./.github/workflows/test-data-xml.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
+
+  test-data-json:
+    uses: ./.github/workflows/test-data-json.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
+
+  test-data-fressian:
+    uses: ./.github/workflows/test-data-fressian.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
+
+  test-data-csv:
+    uses: ./.github/workflows/test-data-csv.yml
+    with:
+      javaVersion: ${{ inputs.javaVersion }}
+      repository: ${{ inputs.repository }}
+      ref: ${{ inputs.ref }}
