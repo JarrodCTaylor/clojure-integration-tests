@@ -1,20 +1,20 @@
 name: Test Contribs
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       javaVersion:
         description: "Java Version"
-        type: string
         required: true
+        default: '11'
       repository:
         description: "Repository name with owner."
-        type: string
         required: true
+        default: 'clojure/clojure'
       ref:
         description: "The branch, tag or SHA to checkout"
-        type: string
         required: true
+        default: 'master'
 
 jobs:
   build:
