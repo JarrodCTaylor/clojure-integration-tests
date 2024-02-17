@@ -59,7 +59,7 @@ jobs:
       - name: Checkout Core.Async Source Code
         uses: actions/checkout@v4
         with:
-          repository: clojure/core.async
+          repository: clojure/core.cache
           ref: 'master'
           path: 'contrib-source'
 
