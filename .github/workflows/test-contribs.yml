@@ -1,4 +1,4 @@
-name: Build Clojure From Source
+name: Test Contribs
 
 on:
   workflow_call:
@@ -40,3 +40,19 @@ jobs:
           cd clojure-source
           mvn install
 
+      - name: Checkout Core.Async Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: clojure/core.async
+          ref: 'master'
+          path: 'test-source'
+
+      - name: Determine latest snapshot version
+        run: |
+          chmod +x ./test-source/scripts/find-latest-snapshot.sh
+          ./test-source/scripts/find-latest-snapshot.sh
+
+      - name: Run Tests
+        run: |
+          cd /home/runner/work/clojure-integration-tests/clojure-integration-tests/test-source
+          mvn -ntp -B -Dclojure.version=${{ env.LATEST_SNAPSHOT }} clean test

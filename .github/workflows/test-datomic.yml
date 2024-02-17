@@ -48,14 +48,6 @@ jobs:
           ref: 'main'
           path: 'test-source'
 
-#      - name: Create dev-local.edn
-#        run: |
-#          mkdir $HOME/.datomic
-#          cd $HOME/.datomic
-#          pwd
-#          ls -la
-#          echo '{:storage-dir "/home/runner/.datomic"}' > dev-local.edn
-
       - name: Install CLI
         run: |
           curl -L -O https://github.com/clojure/brew-install/releases/latest/download/posix-install.sh
