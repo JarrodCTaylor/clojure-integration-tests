@@ -1,6 +1,22 @@
 name: Test Contribs
 
 on:
+
+#  workflow_call:
+#    inputs:
+#      javaVersion:
+#        description: "Java Version"
+#        type: string
+#        required: true
+#      repository:
+#        description: "Repository name with owner."
+#        type: string
+#        required: true
+#      ref:
+#        description: "The branch, tag or SHA to checkout"
+#        type: string
+#        required: true
+
   workflow_dispatch:
     inputs:
       javaVersion:
@@ -45,6 +61,13 @@ jobs:
         with:
           repository: clojure/core.async
           ref: 'master'
+          path: 'contrib-source'
+
+      - name: Checkout Integration Test Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: JarrodCTaylor/clojure-integration-tests
+          ref: 'main'
           path: 'test-source'
 
       - name: Determine latest snapshot version
@@ -54,5 +77,5 @@ jobs:
 
       - name: Run Tests
         run: |
-          cd /home/runner/work/clojure-integration-tests/clojure-integration-tests/test-source
+          cd /home/runner/work/clojure-integration-tests/clojure-integration-tests/contrib-source
           mvn -ntp -B -Dclojure.version=${{ env.LATEST_SNAPSHOT }} clean test
