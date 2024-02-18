@@ -1,4 +1,4 @@
-name: Test Core Logic
+name: Test Contrib Repo
 
 on:
 
@@ -14,6 +14,14 @@ on:
         required: true
       ref:
         description: "The branch, tag or SHA to checkout"
+        type: string
+        required: true
+      contribRepo:
+        description: "Contrib Repository name with owner."
+        type: string
+        required: true
+      contribRef:
+        description: "The branch, tag or SHA to checkout for contrib repo"
         type: string
         required: true
 
@@ -53,10 +61,10 @@ jobs:
           chmod +x ./test-source/scripts/find-latest-snapshot.sh
           ./test-source/scripts/find-latest-snapshot.sh
 
-      - name: Checkout Core.Logic Source Code
+      - name: Checkout Contrib Source Code
         uses: actions/checkout@v4
         with:
-          repository: clojure/core.logic
+          repository: clojure/math.combinatorics
           ref: 'master'
           path: 'contrib-source'
 

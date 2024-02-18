@@ -18,71 +18,91 @@ on:
 
 jobs:
   test-core-cache:
-    uses: ./.github/workflows/test-core-cache.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/core.cache'
+      contribRef: 'master'
 
   test-core-logic:
-    uses: ./.github/workflows/test-core-logic.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/core.logic'
+      contribRef: 'master'
 
   test-core-match:
-    uses: ./.github/workflows/test-core-match.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/core.match'
+      contribRef: 'master'
 
   test-core-memoize:
-    uses: ./.github/workflows/test-core-memoize.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/core.memoize'
+      contribRef: 'master'
 
-  test-core-combinatorics:
-    uses: ./.github/workflows/test-math-combinatorics.yml
+  test-math-combinatorics:
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/math.combinatorics'
+      contribRef: 'master'
 
   test-java-jdbc:
-    uses: ./.github/workflows/test-java-jdbc.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/java.jdbc'
+      contribRef: 'master'
 
   test-data-xml:
-    uses: ./.github/workflows/test-data-xml.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/data.xml'
+      contribRef: 'master'
 
   test-data-json:
-    uses: ./.github/workflows/test-data-json.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/data.json'
+      contribRef: 'master'
 
   test-data-fressian:
-    uses: ./.github/workflows/test-data-fressian.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/data.fressian'
+      contribRef: 'master'
 
   test-data-csv:
-    uses: ./.github/workflows/test-data-csv.yml
+    uses: ./.github/workflows/test-contrib-repo.yml
     with:
       javaVersion: ${{ inputs.javaVersion }}
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
+      contribRepo: 'clojure/data.csv'
+      contribRef: 'master'
