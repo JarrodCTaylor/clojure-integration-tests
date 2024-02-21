@@ -64,8 +64,8 @@ jobs:
       - name: Checkout Contrib Source Code
         uses: actions/checkout@v4
         with:
-          repository: clojure/math.combinatorics
-          ref: 'master'
+          repository: ${{ inputs.contribRepo }}
+          ref: ${{ inputs.contribRef }}
           path: 'contrib-source'
 
       - name: Run Tests
