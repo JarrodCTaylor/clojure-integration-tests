@@ -57,8 +57,8 @@ jobs:
 
       - name: Determine latest snapshot version
         run: |
-          chmod +x ./test-source/scripts/find-latest-snapshot.sh
-          ./test-source/scripts/find-latest-snapshot.sh
+          chmod +x ./test-source/scripts/find-installed-clojure-version.sh
+          ./test-source/scripts/find-installed-clojure-version.sh
 
       - name: Run Tests
         run: |
